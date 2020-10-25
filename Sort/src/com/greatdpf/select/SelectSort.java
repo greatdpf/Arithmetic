@@ -1,4 +1,4 @@
-package com.greatdpf;
+package com.greatdpf.select;
 
 import java.util.Arrays;
 
@@ -20,7 +20,7 @@ public class SelectSort {
         // 数组中数的最大值
         int maxValue = 100;
         // 测试 500000 数据
-        int testTime = 500000;
+        int testTime = 50000;
         for (int i = 0;i < testTime;i++) {
             // 传入最大长度和最大值，生成随机数组 arr1
             int[] arr1 = generateRandomArray(maxSize, maxValue);
@@ -42,7 +42,7 @@ public class SelectSort {
         }
         // 在生成一组数据
         int[] arr = generateRandomArray(maxSize, maxValue);
-        System.out.println("生成的随机数组如下，长度：" + maxSize);
+        System.out.println("生成的随机数组如下，长度：" + arr.length);
         // 打印
         printArray(arr);
         // 排序
@@ -65,7 +65,7 @@ public class SelectSort {
      * @param maxValue 数组最大值
      */
     public static int[] generateRandomArray(int maxSize, int maxValue) {
-        // 数组的具体长度，[1, maxSize]，maxSize + 1，防止数组长度为 0
+        // 数组的具体长度，[1, maxSize]，maxSize + 1，防止数组长度为 0 ,且能够取到 maxSize
         int size = (int) (Math.random() * (maxSize+1));
         // 定义数组,长度为 size
         int[] array = new int[size];
