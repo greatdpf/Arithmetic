@@ -1,5 +1,6 @@
 package com.greatdpf.sortedBisection;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -17,21 +18,23 @@ public class SortedBisection {
     public static void main(String[] args){
         // 测试 50000 组数据
         int testTime = 50000;
-        //
-        int maxSize = 10;
+        int maxSize = 100;
         int maxValue = 100;
         for (int i = 0;i < testTime;i++) {
-            int num = (int) (Math.random() * (100 + 1));
+            int num = (int) (Math.random() * (10 + 1));
             int[] arr = generateRandomArray(maxSize, maxValue);
             Arrays.sort(arr);
             // 二分查找
             int index1 = bisection(arr, num);
-            int index2 = comparisonBisection(arr, num);
-            if (index1 != index2) {
+            ArrayList<Integer> indexes = comparisonBisection(arr, num);
+            if (!indexes.contains(index1)) {
                 print(arr);
                 System.out.println(num);
                 System.out.println(index1);
-                System.out.println(index2);
+                for (int index : indexes){
+                    System.out.println(index + " ");
+                }
+                System.out.println();
                 break;
             }
         }
@@ -84,9 +87,9 @@ public class SortedBisection {
      */
     public static int bisection(int[] arr, int num) {
         int left = 0;
-        int right = arr.length;
-        while (left < right) {
-            int middle = (left + right) >> 1;
+        int right = arr.length - 1;
+        while (left <= right) {
+            int middle = left + ((right - left) >> 1);
             if (num == arr[middle]) {
                 return middle;
             } else if (num > arr[middle]) {
@@ -104,13 +107,17 @@ public class SortedBisection {
      * @param num 需要查找的数
      * @return 返回数的下标
      */
-    public static int comparisonBisection(int[] arr, int num) {
+    public static ArrayList comparisonBisection(int[] arr, int num) {
+        ArrayList<Integer> arrayList = new ArrayList<>();
         for (int i = 0;i < arr.length;i++) {
             if (num == arr[i]) {
-                return i;
+                arrayList.add(i);
             }
         }
-        return -1;
+        if (arrayList.size() == 0) {
+            arrayList.add(-1);
+        }
+        return arrayList;
     }
 
     /**
