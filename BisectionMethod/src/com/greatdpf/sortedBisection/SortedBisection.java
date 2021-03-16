@@ -18,11 +18,16 @@ public class SortedBisection {
     public static void main(String[] args){
         // 测试 50000 组数据
         int testTime = 50000;
+        // 最大长度
         int maxSize = 100;
+        // 最大值
         int maxValue = 100;
         for (int i = 0;i < testTime;i++) {
+            // 随机数
             int num = (int) (Math.random() * (10 + 1));
+            // 创建随机数组
             int[] arr = generateRandomArray(maxSize, maxValue);
+            // 为随机数组排序
             Arrays.sort(arr);
             // 二分查找
             int index1 = bisection(arr, num);
@@ -45,7 +50,6 @@ public class SortedBisection {
         print(arr);
         // 二分查找
         int index = bisection(arr, num);
-        print(arr);
         System.out.println(num + " 所在的数组中的位置：" + index);
     }
 

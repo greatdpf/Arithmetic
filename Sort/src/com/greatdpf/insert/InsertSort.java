@@ -89,7 +89,7 @@ public class InsertSort {
         if (array == null || array.length < 2) {
             return;
         }
-        // 先判断 0~i，是否有序，在判断 0 ~ i + 1是否有序......
+        // 先判断 0~i，是否有序，在判断 1 ~ i + 1是否有序......
         for (int i = 1;i < array.length;i++) {
             // array[i] > array[i+1],就向后移动（插入），直到位于 0 位置。
             for (int j = i - 1;j >= 0;j--) {
