@@ -7,7 +7,7 @@ package com.greatdpf.select;
  * 选择排序核心代码
  *
  */
-public class CoreCode {
+public class SelectCoreCode {
     /**
      * 程序的入口
      */
