@@ -48,6 +48,12 @@ public class MergeSort {
         printArray(arr);
     }
 
+    /**
+     * 生成随机数组
+     * @param maxSize 最大长度
+     * @param maxValue 最大值
+     * @return 返回生成好的数组
+     */
     public static int[] generateArray(int maxSize, int maxValue) {
         // 数组随机长度大小 [1, maxSize]
         int randomSize = (int) ((Math.random() * maxSize) + 1);
@@ -61,6 +67,11 @@ public class MergeSort {
         return array;
     }
 
+    /**
+     * 赋值数组
+     * @param array 原数组
+     * @return 新数组
+     */
     public static int[] copyArray(int[] array) {
         int[] copyArray = new int[array.length];
         for (int i = 0;i < array.length; i++) {
@@ -69,6 +80,10 @@ public class MergeSort {
         return copyArray;
     }
 
+    /**
+     * 开始进行归并排序
+     * @param array 数组
+     */
     public static void mergeSort(int[] array) {
         // left，right 用于标记数的界限
         int left = 0;
@@ -77,6 +92,12 @@ public class MergeSort {
         mergeIteration(array, left, right);
     }
 
+    /**
+     * 递归排序
+     * @param array 数组
+     * @param left  左边边界
+     * @param right 右边边界
+     */
     public static void mergeIteration(int[] array, int left, int right) {
         // 判断数组是否拆分成最小模块
         if (left >= right) {
@@ -92,10 +113,17 @@ public class MergeSort {
         mergeCore(array, left, right, middle);
     }
 
+    /**
+     * 分组后进行排序
+     * @param array  数组
+     * @param left   左边边界
+     * @param right  右边边界
+     * @param middle 中间数
+     */
     public static void mergeCore(int[] array, int left, int right, int middle) {
-        // 定义新数组，用于将排序好的元素放入
         // 新数组的必须包含 left 和 right 之间的数
         int newArrayLength = right - left + 1;
+        // 定义新数组，用于将排序好的元素放入
         int[] newArray = new int[newArrayLength];
         // 用于循环计数
         int i = 0;
@@ -137,6 +165,12 @@ public class MergeSort {
         }
     }
 
+    /**
+     * 对比数组
+     * @param array     原数组
+     * @param copyArray 新数组
+     * @return 是否相同
+     */
     public static boolean isEquals(int[] array, int[] copyArray) {
         for (int i = 0; i < array.length; i++) {
             if (array[i] != copyArray[i]) {
@@ -146,6 +180,10 @@ public class MergeSort {
         return true;
     }
 
+    /**
+     * 打印数组
+     * @param array 数组
+     */
     public static void printArray(int[] array) {
         for (int i = 0; i < array.length; i++) {
             System.out.print(array[i] + " ");
